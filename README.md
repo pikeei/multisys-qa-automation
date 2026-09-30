@@ -1,4 +1,4 @@
-# Multisys QA Examination - Part 2: Automated Test Scripts
+# Multisys QA Examination -  Automated Test Scripts
 
 UI tests for `http://the-internet.herokuapp.com` and API tests for
 `https://jsonplaceholder.typicode.com/users`.
