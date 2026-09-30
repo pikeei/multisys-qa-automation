@@ -39,6 +39,7 @@ JDK 17 or newer, Maven 3.9+, Google Chrome, and internet access.
 mvn clean test                      # run everything
 mvn clean test -Dheadless=true      # no visible browser window
 mvn clean test -Dbrowser=firefox    # use Firefox instead of Chrome
+mvn -Dtest=tests.CheckboxesTest test #Running individual runs
 ```
 
 Open the report at `target/extent-report/index.html`.

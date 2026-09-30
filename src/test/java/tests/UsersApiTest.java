@@ -20,10 +20,7 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.notNullValue;
 
-/**
- * API tests. Note: JSONPlaceholder is a fake API. A POST returns 201 and a new id,
- * but the data is not saved, so we do not GET the new user afterwards.
- */
+
 public class UsersApiTest {
 
     private static final String USERS = "/users";
@@ -53,20 +50,23 @@ public class UsersApiTest {
 
     @DataProvider(name = "userIds")
     public Object[][] userIds() {
-        return new Object[][]{{1}, {5}, {10}};
+        return new Object[][]{
+                {1, "Leanne Graham", "Bret", "Sincere@april.biz", "Gwenborough", "Romaguera-Crona"},
+                {2, "Ervin Howell", "Antonette", "Shanna@melissa.tv", "Wisokyburgh", "Deckow-Crist"}
+        };
     }
 
     @Test(dataProvider = "userIds", description = "Scenario 4.2 - GET single user")
-    public void getSingleUser(int id) {
+    public void getSingleUser(int id, String name, String username, String email, String city, String companyName) {
         request().when().get(USERS + "/" + id)
                 .then()
                 .statusCode(200)
                 .body("id", equalTo(id))
-                .body("name", notNullValue())
-                .body("username", notNullValue())
-                .body("email", containsString("@"))
-                .body("address.city", notNullValue())
-                .body("company.name", notNullValue());
+                .body("name", equalTo(name))
+                .body("username", equalTo(username))
+                .body("email", equalTo(email))
+                .body("address.city", equalTo(city))
+                .body("company.name", equalTo(companyName));
     }
 
     @Test(description = "Scenario 4.3 - POST creates a user")

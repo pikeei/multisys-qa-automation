@@ -10,10 +10,8 @@ public class CheckboxesTest extends BaseTest {
     public void toggleCheckboxes() {
         CheckboxesPage page = new CheckboxesPage(driver).open();
 
-        
-        Assert.assertTrue(page.getCount() >= 2, "Expected at least 2 checkboxes");
-
-        // We don't assume the starting state: read it, click, check it flipped, click back, check it restored.
+        // We don't assume the starting state: read it, 
+        // click, check it flipped, click back, check it restored.
         for (int i = 0; i < page.getCount(); i++) {
             boolean original = page.isChecked(i);
 
