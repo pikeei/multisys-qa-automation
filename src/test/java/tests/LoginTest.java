@@ -14,7 +14,7 @@ public class LoginTest extends BaseTest {
         return TestData.invalidLogins();
     }
 
-    @Test(description = "Scenario 1.1 - Successful login")
+    @Test(priority = 1, description = "Scenario 1.1 - Successful login")
     public void successfulLogin() {
         SecureAreaPage secure = new LoginPage(driver).open()
                 .loginAs(TestData.VALID_USERNAME, TestData.VALID_PASSWORD);
@@ -25,7 +25,7 @@ public class LoginTest extends BaseTest {
                 "Unexpected message: " + secure.getMessage());
     }
 
-    @Test(dataProvider = "invalidLogins", description = "Scenario 1.2 - Invalid username/password")
+    @Test(priority = 2, dataProvider = "invalidLogins", description = "Scenario 1.2 - Invalid username/password")
     public void invalidLogin(String description, String username, String password, String expectedMessage) {
         LoginPage login = new LoginPage(driver).open().loginExpectingFailure(username, password);
 
@@ -34,7 +34,7 @@ public class LoginTest extends BaseTest {
         Assert.assertTrue(login.getCurrentUrl().contains("/login"), "Should stay on the login page");
     }
 
-    @Test(description = "Scenario 1.3 - Empty credentials")
+    @Test(priority = 3, description = "Scenario 1.3 - Empty credentials")
     public void emptyCredentials() {
         LoginPage login = new LoginPage(driver).open().loginExpectingFailure("", "");
 
@@ -43,7 +43,7 @@ public class LoginTest extends BaseTest {
         Assert.assertTrue(login.getCurrentUrl().contains("/login"), "Should stay on the login page");
     }
 
-    @Test(description = "Bonus - Logout")
+    @Test(priority = 4, description = "Bonus - Logout")
     public void logout() {
         LoginPage login = new LoginPage(driver).open()
                 .loginAs(TestData.VALID_USERNAME, TestData.VALID_PASSWORD)

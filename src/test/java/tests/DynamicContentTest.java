@@ -9,7 +9,7 @@ import java.util.List;
 
 public class DynamicContentTest extends BaseTest {
 
-    @Test(description = "Scenario 2.1 - Content changes on refresh")
+    @Test(priority = 1, description = "Scenario 2.1 - Content changes on refresh")
     public void contentChangesOnRefresh() {
         DynamicContentPage page = new DynamicContentPage(driver).open();
         List<String> before = page.getContent();

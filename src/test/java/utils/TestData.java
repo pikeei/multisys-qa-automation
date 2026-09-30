@@ -13,9 +13,9 @@ public final class TestData {
     public static final String INVALID_PASSWORD_MESSAGE = "Your password is invalid!";
 
     // New user for the POST test
-    public static final String NEW_USER_NAME = "Juan Dela Cruz";
-    public static final String NEW_USER_USERNAME = "jdelacruz";
-    public static final String NEW_USER_EMAIL = "juan.delacruz@example.com";
+    public static final String NEW_USER_NAME = "Paul Kenneth";
+    public static final String NEW_USER_USERNAME = "paulkenneth";
+    public static final String NEW_USER_EMAIL = "paul.kenneth@example.com";
 
     private TestData() {
     }

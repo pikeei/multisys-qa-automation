@@ -6,7 +6,7 @@ import pages.CheckboxesPage;
 
 public class CheckboxesTest extends BaseTest {
 
-    @Test(description = "Scenario 3.1 - Modify checkbox state")
+    @Test(priority = 1, description = "Scenario 3.1 - Modify checkbox state")
     public void toggleCheckboxes() {
         CheckboxesPage page = new CheckboxesPage(driver).open();
 

@@ -38,7 +38,7 @@ public class UsersApiTest {
                 .header("User-Agent", "Mozilla/5.0 (QA-Automation-Exam)");
     }
 
-    @Test(description = "Scenario 4.1 - GET all users")
+    @Test(priority = 1, description = "Scenario 4.1 - GET all users")
     public void getAllUsers() {
         request().when().get(USERS)
                 .then()
@@ -56,7 +56,7 @@ public class UsersApiTest {
         };
     }
 
-    @Test(dataProvider = "userIds", description = "Scenario 4.2 - GET single user")
+    @Test(priority = 2, dataProvider = "userIds", description = "Scenario 4.2 - GET single user")
     public void getSingleUser(int id, String name, String username, String email, String city, String companyName) {
         request().when().get(USERS + "/" + id)
                 .then()
@@ -69,7 +69,7 @@ public class UsersApiTest {
                 .body("company.name", equalTo(companyName));
     }
 
-    @Test(description = "Scenario 4.3 - POST creates a user")
+    @Test(priority = 3, description = "Scenario 4.3 - POST creates a user")
     public void createUser() {
         List<Integer> existingIds = request().when().get(USERS)
                 .then().statusCode(200)
@@ -89,7 +89,7 @@ public class UsersApiTest {
         Assert.assertEquals(response.jsonPath().getString("email"), TestData.NEW_USER_EMAIL, "email");
     }
 
-    @Test(description = "Bonus - GET unknown user returns 404")
+    @Test(priority = 4, description = "Bonus - GET unknown user returns 404")
     public void getUnknownUser() {
         request().when().get(USERS + "/9999")
                 .then()
