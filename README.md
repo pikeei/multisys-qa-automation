@@ -31,18 +31,29 @@ multisys-qa-automation/
 
 ## Prerequisites
 
-JDK 17 or newer, Maven 3.9+, Google Chrome, and internet access.
+- JDK 17 or newer. Set `JAVA_HOME` and make sure `java` is available on `PATH`.
+- Maven 3.9 or newer, available on `PATH`.
+- Google Chrome for the default browser. Firefox is also supported when selected explicitly.
+- Internet access to Maven Central and the test services (`the-internet.herokuapp.com` and `jsonplaceholder.typicode.com`). Selenium Manager may also need internet access to resolve the matching browser driver.
+
+No browser driver needs to be installed or configured manually; Selenium 4.27 uses Selenium Manager. Run these from the repository root (the directory containing `pom.xml`) and verify the tools are available:
+
+```bash
+java -version
+mvn -version
+```
 
 ## How to run
 
 ```bash
-mvn clean test                      # run everything
-mvn clean test -Dheadless=true      # no visible browser window
-mvn clean test -Dbrowser=firefox    # use Firefox instead of Chrome
-mvn -Dtest=tests.CheckboxesTest test #Running individual runs
+mvn clean test                                           # run the full suite
+mvn clean test -Dheadless=true                          # run headlessly in Chrome
+mvn clean test -Dbrowser=firefox                         # use Firefox
+mvn -Dtest=tests.CheckboxesTest test                     # run one test class
+mvn -Dtest=tests.LoginTest#successfulLogin test          # run one test method
 ```
 
-Open the report at `target/extent-report/index.html`.
+The Extent HTML report is generated at `target/extent-report/index.html`. UI test entries include screenshots on pass or failure; API tests have no browser screenshots.
 
 ## Scenarios covered
 

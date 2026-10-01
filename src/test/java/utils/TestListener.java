@@ -34,7 +34,13 @@ public class TestListener implements ITestListener {
 
     @Override
     public void onTestSuccess(ITestResult result) {
-        test.pass("Test passed");
+        String screenshot = takeScreenshot(result);
+        if (screenshot != null) {
+            test.pass("Test passed",
+                    MediaEntityBuilder.createScreenCaptureFromBase64String(screenshot).build());
+        } else {
+            test.pass("Test passed");
+        }
     }
 
     @Override
